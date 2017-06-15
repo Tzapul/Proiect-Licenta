@@ -1,5 +1,6 @@
 package ro.ucv.ace.model;
 
+import org.springframework.context.annotation.Primary;
 import ro.ucv.ace.model.enums.Day;
 
 import javax.persistence.*;
@@ -14,6 +15,7 @@ public class ScheduleDay {
 
     @Id
     @Column(name = "DAY")
+    @Enumerated(EnumType.STRING)
     private Day day;
 
     @Column(name = "FROM")
@@ -31,5 +33,35 @@ public class ScheduleDay {
     public ScheduleDay() {
     }
 
+    public Day getDay() {
+        return day;
+    }
 
+    public void setDay(Day day) {
+        this.day = day;
+    }
+
+    public Integer getFrom() {
+        return from;
+    }
+
+    public void setFrom(Integer from) {
+        this.from = from;
+    }
+
+    public Integer getTo() {
+        return to;
+    }
+
+    public void setTo(Integer to) {
+        this.to = to;
+    }
+
+    public Schedule getSchedule() {
+        return schedule;
+    }
+
+    public void setSchedule(Schedule schedule) {
+        this.schedule = schedule;
+    }
 }

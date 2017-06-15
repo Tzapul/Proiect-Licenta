@@ -167,7 +167,22 @@ public class DomainConfig {
     }
 
     @Bean(name = "innerPlagiarismResultRepository")
-    IJpaRepository<PlagiarismResult, Integer> plagiarismResultIntegerIJpaRepository() {
-        return new JpaRepository<>(PlagiarismResult.class);
+        IJpaRepository<PlagiarismResult, Integer> plagiarismResultIntegerIJpaRepository() {
+            return new JpaRepository<>(PlagiarismResult.class);
+    }
+
+    @Bean(name = "innerReservationRepository")
+    IJpaRepository<Reservation, Integer> reservationIntegerIJpaRepository() {
+        return new JpaRepository<>(Reservation.class);
+    }
+
+    @Bean(name = "innerScheduleRepository")
+    IJpaRepository<Schedule, Integer> ScheduleIntegerIJpaRepository() {
+        return new JpaRepository<>(Schedule.class);
+    }
+
+    @Bean(name = "innerDaysOffRepository")
+    IJpaRepository<DaysOff, Integer> DaysOffIntegerIJpaRepository() {
+        return new JpaRepository<>(DaysOff.class);
     }
 }
