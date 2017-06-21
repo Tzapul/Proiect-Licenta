@@ -13,9 +13,9 @@ public class UserVisitor {
     private UserDto userDto;
 
     public void visit(User user) {
-        userDto = new UserDto(user.getId(), user.getUsername(), user.getRole(), "", user.getPersonDetails().getFirstName(),
-                user.getPersonDetails().getLastName(), user.getPersonDetails().getGender().toString(),
-                user.getPersonDetails().getSsn(), user.getAccount().getEmail());
+        userDto = new UserDto(user.getId(), "", "", user.getPersonDetails().getFirstName(),
+                user.getPersonDetails().getLastName(), user.getPersonDetails().getPhoneNumber().toString(),
+                "", user.getAccount().getEmail());
     }
 
     public UserDto getUserDto() {

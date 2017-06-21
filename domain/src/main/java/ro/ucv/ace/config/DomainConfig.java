@@ -185,4 +185,10 @@ public class DomainConfig {
     IJpaRepository<DaysOff, Integer> DaysOffIntegerIJpaRepository() {
         return new JpaRepository<>(DaysOff.class);
     }
+
+    @Bean(name = "innerClientRepository")
+    IJpaRepository<Client, Integer> ClientIntegerIJpaRepository() {
+        return new JpaRepository<>(Client.class);
+    }
+
 }

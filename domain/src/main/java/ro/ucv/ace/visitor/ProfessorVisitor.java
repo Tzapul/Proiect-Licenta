@@ -14,7 +14,7 @@ public class ProfessorVisitor {
 
     public void visit(Professor professor) {
         professorDto = new ProfessorDto(professor.getId(), professor.getAccount().getUsername(), professor.getPersonDetails().getFirstName(),
-                professor.getPersonDetails().getLastName(), professor.getPersonDetails().getGender().toString(), professor.getPersonDetails().getSsn(),
+                professor.getPersonDetails().getLastName(), professor.getPersonDetails().getPhoneNumber().toString(), "",
                 professor.getAccount().getEmail(), professor.getPosition());
     }
 

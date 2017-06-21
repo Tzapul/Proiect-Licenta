@@ -126,7 +126,7 @@
             <artifactId>socket.io-client</artifactId>
         </dependency>
 
-        <!-- Java Classes to JSON -->
+        <!-- Java Classes end JSON -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>

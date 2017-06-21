@@ -21,6 +21,7 @@ public class ProfessorDto {
 
     private String position;
 
+
     public ProfessorDto(int id, String username, String firstName, String lastName, String gender, String ssn, String email, String position) {
         this.id = id;
         this.username = username;

@@ -30,10 +30,10 @@ public class Student extends User {
 
     public Student(String firstName, String lastName, String email, String ssn, String gender, String username, String password,
                    Subgroup subgroup) {
-        PersonDetails personDetails = new PersonDetails(firstName, lastName, ssn, gender);
-        Account account = new Account(email, username, password, UserRole.STUDENT, this);
+        PersonDetails personDetails = new PersonDetails(firstName, lastName, gender);
+        //Account account = new Account(email, username, password, UserRole.STUDENT, this);
         this.setSubgroup(subgroup);
-        this.setAccount(account);
+        //this.setAccount(account);
         this.setPersonDetails(personDetails);
     }
 
@@ -60,8 +60,8 @@ public class Student extends User {
     public void update(String firstName, String lastName, String ssn, String email, String gender, Subgroup subgroup) {
         this.getPersonDetails().setFirstName(firstName);
         this.getPersonDetails().setLastName(lastName);
-        this.getPersonDetails().setSsn(ssn);
-        this.getPersonDetails().setGender(Gender.valueOf(gender));
+        //this.getPersonDetails().setEmail(ssn);
+        //this.getPersonDetails().setPhoneNumber(Gender.valueOf(gender));
         this.getAccount().setEmail(email);
         this.setSubgroup(subgroup);
     }

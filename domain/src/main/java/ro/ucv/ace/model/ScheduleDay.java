@@ -1,10 +1,8 @@
 package ro.ucv.ace.model;
 
-import org.springframework.context.annotation.Primary;
 import ro.ucv.ace.model.enums.Day;
 
 import javax.persistence.*;
-import javax.validation.constraints.Min;
 
 /**
  * Created by tzapt on 6/10/2017.
@@ -18,13 +16,13 @@ public class ScheduleDay {
     @Enumerated(EnumType.STRING)
     private Day day;
 
-    @Column(name = "FROM")
+    @Column(name = "START")
     @Basic
-    private Integer from;
+    private Integer start;
 
-    @Column(name = "TO")
+    @Column(name = "END")
     @Basic
-    private Integer to;
+    private Integer end;
 
     @ManyToOne
     @JoinColumn(name = "SCHEDULE_ID", referencedColumnName = "ID")
@@ -41,20 +39,20 @@ public class ScheduleDay {
         this.day = day;
     }
 
-    public Integer getFrom() {
-        return from;
+    public Integer getStart() {
+        return start;
     }
 
-    public void setFrom(Integer from) {
-        this.from = from;
+    public void setStart(Integer start) {
+        this.start = start;
     }
 
-    public Integer getTo() {
-        return to;
+    public Integer getEnd() {
+        return end;
     }
 
-    public void setTo(Integer to) {
-        this.to = to;
+    public void setEnd(Integer end) {
+        this.end = end;
     }
 
     public Schedule getSchedule() {

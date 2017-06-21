@@ -7,7 +7,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import ro.ucv.ace.model.enums.UserRole;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -34,13 +33,6 @@ public class Account {
     @Basic
     private String email;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "USER_ROLE")
-    private UserRole role;
-
-    @OneToMany(mappedBy = "account", cascade = {CascadeType.REMOVE, CascadeType.PERSIST}, orphanRemoval = true)
-    private List<Notification> notifications = new ArrayList<>();
-
     @JoinColumn(name = "ID")
     @OneToOne
     @MapsId
@@ -54,11 +46,10 @@ public class Account {
 
     }
 
-    public Account(String email, String username, String password, UserRole professor, User user) {
+    public Account(String email, String username, String password, User user) {
         this.email = email;
         this.username = username;
         this.password = passwordEncoder.encode(password);
-        this.role = professor;
         this.user = user;
     }
 
@@ -90,31 +81,14 @@ public class Account {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmail(String email) { this.email = email;
     }
 
-    public UserRole getRole() {
-        return role;
-    }
-
-    public void setRole(UserRole role) {
-        this.role = role;
-    }
-
-    public List<Notification> getNotifications() {
-        return notifications;
-    }
-
-    public void setNotifications(List<Notification> notifications) {
-        this.notifications = notifications;
-    }
-
-    public User getUser() {
+    public User getClient() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setClient(User user) {
         this.user = user;
     }
 

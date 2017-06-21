@@ -22,12 +22,12 @@ public class NotificationRepository implements INotificationRepository {
     @Override
     public List<Notification> findByUser(int userId) {
         return innerNotificationRepository
-                .findAllWhere(notification -> notification.getAccount().getUser().getId().equals(userId));
+                .findAllWhere(notification -> notification.getAccount().getClient().getId().equals(userId));
     }
 
     @Override
     public List<Notification> findUnseenByUser(int userId) {
-        List<Notification> notifications = innerNotificationRepository.findAllWhere(notification -> notification.getAccount().getUser().getId().equals(userId)
+        List<Notification> notifications = innerNotificationRepository.findAllWhere(notification -> notification.getAccount().getClient().getId().equals(userId)
                 && !notification.getSeen().equals(true));
         notifications = notifications.stream().sorted((n1, n2) -> n2.getDate().compareTo(n1.getDate())).collect(Collectors.toList());
 

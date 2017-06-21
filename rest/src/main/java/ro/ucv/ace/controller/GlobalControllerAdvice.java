@@ -80,4 +80,18 @@ public class GlobalControllerAdvice {
         return new ResponseEntity<>(errorInfo, HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(UsernameAlreadyUsed.class)
+    public ResponseEntity<ErrorInfo> noSolutionException(UsernameAlreadyUsed e) {
+        ErrorInfo errorInfo = new ErrorInfo(HttpStatus.BAD_REQUEST, e.getMessage());
+
+        return new ResponseEntity<>(errorInfo, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(InvalidEmailFormat.class)
+    public ResponseEntity<ErrorInfo> noSolutionException(InvalidEmailFormat e) {
+        ErrorInfo errorInfo = new ErrorInfo(HttpStatus.BAD_REQUEST, e.getMessage());
+
+        return new ResponseEntity<>(errorInfo, HttpStatus.BAD_REQUEST);
+    }
+
 }

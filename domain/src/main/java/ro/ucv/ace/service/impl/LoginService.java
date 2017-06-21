@@ -44,10 +44,6 @@ public class LoginService implements ILoginService {
 
         UserDto userDto = userVisitor.getUserDto();
 
-        String token = userLogin.getUsername() + ":" + userLogin.getPassword();
-        byte[] bytes = Base64.getEncoder().encode(token.getBytes());
-        userDto.setAuthorization("Basic " + new String(bytes, Charset.forName("UTF-8")));
-
         return userDto;
     }
 }

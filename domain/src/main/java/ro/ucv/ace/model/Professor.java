@@ -27,9 +27,9 @@ public class Professor extends User {
     }
 
     public Professor(String firstName, String gender, String lastName, String position, String ssn, String email, String username, String password) {
-        PersonDetails personDetails = new PersonDetails(firstName, lastName, ssn, gender);
-        Account account = new Account(email, username, password, UserRole.PROFESSOR, this);
-        this.setAccount(account);
+        PersonDetails personDetails = new PersonDetails(firstName, lastName, gender);
+        //Account account = new Account(email, username, password, UserRole.PROFESSOR, this);
+        //this.setAccount(account);
         this.setPersonDetails(personDetails);
         this.position = position;
     }
@@ -61,8 +61,8 @@ public class Professor extends User {
     public void update(String firstName, String lastName, String ssn, String email, String gender, String position) {
         this.getPersonDetails().setFirstName(firstName);
         this.getPersonDetails().setLastName(lastName);
-        this.getPersonDetails().setSsn(ssn);
-        this.getPersonDetails().setGender(Gender.valueOf(gender));
+        //this.getPersonDetails().setEmail(ssn);
+        //this.getPersonDetails().setPhoneNumber(Gender.valueOf(gender));
         this.setPosition(position);
         this.getAccount().setEmail(email);
     }

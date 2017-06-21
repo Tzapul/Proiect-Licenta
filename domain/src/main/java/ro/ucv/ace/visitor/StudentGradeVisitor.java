@@ -14,7 +14,7 @@ public class StudentGradeVisitor {
 
     public void visit(Student student) {
         studentGradeDto = new StudentGradeDto(student.getId(), student.getAccount().getUsername(), student.getPersonDetails().getFirstName(),
-                student.getPersonDetails().getLastName(), student.getPersonDetails().getGender().toString(), student.getPersonDetails().getSsn(),
+                student.getPersonDetails().getLastName(), student.getPersonDetails().getPhoneNumber().toString(), "",
                 student.getAccount().getEmail(), student.getSubgroup().getName(), "N/A");
     }
 

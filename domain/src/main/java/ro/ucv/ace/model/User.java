@@ -40,10 +40,6 @@ public class User {
         return account.getPassword();
     }
 
-    public String getRole() {
-        return account.getRole().toString();
-    }
-
     public Integer getId() {
         return id;
     }
@@ -70,6 +66,6 @@ public class User {
 
     public void addNotification(Notification notification) {
         notification.setAccount(account);
-        getAccount().getNotifications().add(notification);
+        //getAccount().getNotifications().add(notification);
     }
 }
