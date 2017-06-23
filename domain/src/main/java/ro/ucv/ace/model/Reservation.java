@@ -2,6 +2,8 @@ package ro.ucv.ace.model;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by tzapt on 6/10/2017.
@@ -34,6 +36,11 @@ public class Reservation {
     @Column(name = "PEOPLE")
     @Basic
     private Integer people;
+
+    @ManyToMany
+    @JoinTable(name = "RESERVATION_TABLES", joinColumns = @JoinColumn(name = "RESERVATION_DATE", referencedColumnName = "DATE")
+            , inverseJoinColumns = @JoinColumn(name = "TABLE_ID", referencedColumnName = "ID"))
+    private List<Tables> tables = new ArrayList<>();
 
     public Reservation() {
     }
