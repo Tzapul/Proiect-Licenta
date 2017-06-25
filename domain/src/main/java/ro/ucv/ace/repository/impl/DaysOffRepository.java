@@ -2,6 +2,7 @@ package ro.ucv.ace.repository.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import ro.ucv.ace.converter.StringConverter;
 import ro.ucv.ace.model.DaysOff;
 import ro.ucv.ace.model.Reservation;
 import ro.ucv.ace.model.Schedule;
@@ -36,4 +37,5 @@ public class DaysOffRepository implements IDaysOffRepository {
 
     @Override
     public DaysOff findOne(int id) { return innerDaysOffRepository.findOne(id); }
+
 }

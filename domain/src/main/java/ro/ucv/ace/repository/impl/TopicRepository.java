@@ -40,12 +40,12 @@ public class TopicRepository implements ITopicRepository {
 
     @Override
     public List<Topic> findByProfessor(int professorId) {
-        return innerTopicRepository.findAllWhere(topic -> topic.getProfessor().getId().equals(professorId));
+        return null;
     }
 
     @Override
     public Topic findByProfessorAndName(int professorId, String name) {
-        return innerTopicRepository.findOneWhere(topic -> topic.getProfessor().getId().equals(professorId) && topic.getName().equals(name));
+        return null;
     }
 
 }

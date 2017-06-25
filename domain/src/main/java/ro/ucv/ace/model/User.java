@@ -10,12 +10,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "USER")
 @Inheritance(strategy = InheritanceType.JOINED)
-public class User {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
-    private Integer id;
+public class User extends Client{
 
     @OneToOne(cascade = {CascadeType.ALL}, mappedBy = "user")
     private Account account;
@@ -23,6 +18,16 @@ public class User {
     @Embedded
     private PersonDetails personDetails;
 
+    public User() {
+    }
+
+    public User(String firstName, String lastName, String phoneNumber, String email, String username, String password) {
+        PersonDetails personDetails = new PersonDetails(firstName, lastName, phoneNumber);
+        Account account = new Account(email, username, password, this);
+
+        this.setAccount(account);
+        this.setPersonDetails(personDetails);
+    }
 
     public boolean passwordMatches(String password) {
         return account.passwordMatches(password);
@@ -38,14 +43,6 @@ public class User {
 
     public String getPassword() {
         return account.getPassword();
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public Account getAccount() {

@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import ro.ucv.ace.builder.INotificationBuilder;
 import ro.ucv.ace.builder.IPathBuilder;
 import ro.ucv.ace.builder.ITaskBuilder;
+import ro.ucv.ace.converter.StringConverter;
 import ro.ucv.ace.dto.task.ETaskDto;
 import ro.ucv.ace.dto.task.STaskDto;
 import ro.ucv.ace.dto.task.TaskDto;
@@ -174,7 +175,7 @@ public class TaskService implements ITaskService {
             plagiarismAnalyser = plagiarismAnalyserRepository.getNullPlagiarismAnalyser();
         }
 
-        task.update(taskDto.getName(), taskDto.getDescription(), localDateFrom(taskDto.getDeadline()), plagiarismAnalyser);
+        task.update(taskDto.getName(), taskDto.getDescription(), StringConverter.toLocalDate(taskDto.getDeadline()), plagiarismAnalyser);
         task = taskRepository.save(task);
         task.accept(taskVisitor);
 
@@ -197,10 +198,5 @@ public class TaskService implements ITaskService {
         }
 
         return taskVisitor.getTaskDto();
-    }
-
-    private LocalDate localDateFrom(String date) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        return LocalDate.parse(date, formatter);
     }
 }

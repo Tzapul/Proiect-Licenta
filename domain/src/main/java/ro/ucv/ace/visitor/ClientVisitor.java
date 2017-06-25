@@ -15,9 +15,7 @@ public class ClientVisitor {
     private ClientDto clientDto;
 
     public void visit(Client client) {
-        clientDto = new ClientDto(client.getId(), client.getUsername(), client.getPassword(),
-                client.getPersonDetails().getFirstName(), client.getPersonDetails().getLastName(), client.getAccount().getEmail(),
-                client.getPersonDetails().getPhoneNumber());
+        clientDto = new ClientDto();
     }
 
     public ClientDto getClientDto() {

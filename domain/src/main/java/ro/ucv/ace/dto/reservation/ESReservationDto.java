@@ -15,6 +15,9 @@ public class ESReservationDto {
 
     private int people;
 
+    public ESReservationDto() {
+    }
+
     public ESReservationDto(String name, String email, String date, String phone, int people) {
         this.name = name;
         this.email = email;

@@ -9,4 +9,6 @@ public interface IUserRepository {
     User getByUsername(String username);
 
     boolean usernameExists(String username);
+
+    User save(User build);
 }

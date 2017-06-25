@@ -15,7 +15,6 @@ public class ClientBuilder implements IClientBuilder {
 
     @Override
     public Client build(ESClientDto clientDto) {
-        return new Client(clientDto.getFirstName(), clientDto.getLastName(), clientDto.getPhoneNumber(),
-                clientDto.getEmail(), clientDto.getUsername(), clientDto.getPassword());
+        return new Client();
     }
 }

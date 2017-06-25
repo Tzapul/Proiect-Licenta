@@ -137,7 +137,7 @@ public class StudentService implements IStudentService {
 
             Solution solution = null;
             try {
-                solution = solutionRepository.getSolutionForStudentByTask(s.getId(), taskId);
+                solution = solutionRepository.getSolutionForStudentByTask(1, taskId);
                 Double mark = solution.getMark();
                 if (mark != null) {
                     studentGradeDto.setMark(mark.toString());
@@ -186,7 +186,7 @@ public class StudentService implements IStudentService {
 
         Solution solution = null;
         try {
-            solution = solutionRepository.getSolutionForStudentByTask(student.getId(), taskId);
+            solution = solutionRepository.getSolutionForStudentByTask(1, taskId);
         } catch (EntityNotFoundException e) {
             throw new NoSolutionSentException("The student didn't send any solution.");
         }

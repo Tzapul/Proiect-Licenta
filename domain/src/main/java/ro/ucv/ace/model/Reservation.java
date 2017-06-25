@@ -1,6 +1,9 @@
 package ro.ucv.ace.model;
 
+import ro.ucv.ace.visitor.ReservationVisitor;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +13,7 @@ import java.util.List;
  */
 @Entity
 @Table(name = "RESERVATION")
-public class Reservation {
+public class Reservation{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,7 +24,7 @@ public class Reservation {
     @Basic
     private String name;
 
-    @Column(name = "EMAIL")
+    @Column(name = "RESERVATION_EMAIL")
     @Basic
     private String email;
 
@@ -38,11 +41,29 @@ public class Reservation {
     private Integer people;
 
     @ManyToMany
-    @JoinTable(name = "RESERVATION_TABLES", joinColumns = @JoinColumn(name = "RESERVATION_DATE", referencedColumnName = "DATE")
+    @JoinTable(name = "RESERVATION_TABLES", joinColumns = @JoinColumn(name = "RESERVATION_ID", referencedColumnName = "ID")
             , inverseJoinColumns = @JoinColumn(name = "TABLE_ID", referencedColumnName = "ID"))
     private List<Tables> tables = new ArrayList<>();
 
+    @ManyToOne
+    @JoinColumn(name = "CLIENT_ID", referencedColumnName = "ID", nullable = false)
+    private Client client;
+
     public Reservation() {
+    }
+
+    public Reservation(String name, String email, LocalDate date, String phoneNumber, Integer people, List<Tables> tables, Client client) {
+        this.name = name;
+        this.email = email;
+        this.date = date;
+        this.phoneNumber = phoneNumber;
+        this.people = people;
+        this.tables = tables;
+        this.client = client;
+//        client.addReservation(this);
+//        for(Tables table: tables) {
+//            table.addReservation(this);
+//        }
     }
 
     public Integer getId() {
@@ -91,5 +112,25 @@ public class Reservation {
 
     public void setPeople(Integer people) {
         this.people = people;
+    }
+
+    public List<Tables> getTables() {
+        return tables;
+    }
+
+    public void setTables(List<Tables> tables) {
+        this.tables = tables;
+    }
+
+    public void accept(ReservationVisitor reservationVisitor) {
+        reservationVisitor.visit(this);
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
     }
 }

@@ -17,4 +17,5 @@ public interface IDaysOffRepository {
     DaysOff delete(int id);
 
     DaysOff findOne(int id);
+
 }

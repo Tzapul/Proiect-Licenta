@@ -81,14 +81,28 @@ public class GlobalControllerAdvice {
     }
 
     @ExceptionHandler(UsernameAlreadyUsed.class)
-    public ResponseEntity<ErrorInfo> noSolutionException(UsernameAlreadyUsed e) {
+    public ResponseEntity<ErrorInfo> usernameAlreadyExistsException(UsernameAlreadyUsed e) {
         ErrorInfo errorInfo = new ErrorInfo(HttpStatus.BAD_REQUEST, e.getMessage());
 
         return new ResponseEntity<>(errorInfo, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(InvalidEmailFormat.class)
-    public ResponseEntity<ErrorInfo> noSolutionException(InvalidEmailFormat e) {
+    public ResponseEntity<ErrorInfo> invalidEmailFormatException(InvalidEmailFormat e) {
+        ErrorInfo errorInfo = new ErrorInfo(HttpStatus.BAD_REQUEST, e.getMessage());
+
+        return new ResponseEntity<>(errorInfo, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(NoMoreFreePlacesAtTables.class)
+    public ResponseEntity<ErrorInfo> noMoreFreePlacesException(NoMoreFreePlacesAtTables e) {
+        ErrorInfo errorInfo = new ErrorInfo(HttpStatus.BAD_REQUEST, e.getMessage());
+
+        return new ResponseEntity<>(errorInfo, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(WrongScheduleInterval.class)
+    public ResponseEntity<ErrorInfo> wrongScheduleIntervalException(WrongScheduleInterval e) {
         ErrorInfo errorInfo = new ErrorInfo(HttpStatus.BAD_REQUEST, e.getMessage());
 
         return new ResponseEntity<>(errorInfo, HttpStatus.BAD_REQUEST);

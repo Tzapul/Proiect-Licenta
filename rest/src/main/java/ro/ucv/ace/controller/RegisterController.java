@@ -10,11 +10,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import ro.ucv.ace.dto.client.ClientDto;
 import ro.ucv.ace.dto.client.ESClientDto;
+import ro.ucv.ace.dto.user.ESUserDto;
 import ro.ucv.ace.dto.user.UserDto;
 import ro.ucv.ace.dto.user.UserLoginDto;
 import ro.ucv.ace.exception.EntityBindingException;
 import ro.ucv.ace.model.Client;
+import ro.ucv.ace.model.User;
 import ro.ucv.ace.service.IClientService;
+import ro.ucv.ace.service.IUserService;
 
 import javax.validation.Valid;
 
@@ -26,16 +29,16 @@ import javax.validation.Valid;
 public class RegisterController {
 
     @Autowired
-    private IClientService clientService;
+    private IUserService userService;
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public ResponseEntity<ClientDto> postRegister(@Valid @RequestBody ESClientDto clientDto, BindingResult bindResult) {
+    public ResponseEntity<UserDto> postRegister(@Valid @RequestBody ESUserDto esUserDto, BindingResult bindResult) {
         if (bindResult.hasErrors()) {
             throw new EntityBindingException(bindResult.getFieldErrors());
         }
 
-        ClientDto client = clientService.save(clientDto);
+        UserDto user = userService.save(esUserDto);
 
-        return new ResponseEntity<>(client, HttpStatus.OK);
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
 }

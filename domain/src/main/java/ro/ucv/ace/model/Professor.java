@@ -35,7 +35,7 @@ public class Professor extends User {
     }
 
     public Professor(int professorId) {
-        this.setId(professorId);
+        //this.setId(professorId);
     }
 
     public String getPosition() {

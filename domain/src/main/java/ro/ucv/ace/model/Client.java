@@ -4,26 +4,50 @@ import ro.ucv.ace.visitor.ClientVisitor;
 import ro.ucv.ace.visitor.UserVisitor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by tzapt on 6/20/2017.
  */
 @Entity
 @Table(name = "CLIENT")
-public class Client extends User {
+@Inheritance(strategy = InheritanceType.JOINED)
+public class Client {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
+    private Integer id;
+
+    @OneToMany(mappedBy = "client", cascade = CascadeType.REMOVE)
+    private List<Reservation> resevations = new ArrayList<>();
 
     public Client() {
     }
 
-    public Client(String firstName, String lastName, String phoneNumber, String email, String username, String password) {
-        PersonDetails personDetails = new PersonDetails(firstName, lastName, phoneNumber);
-        Account account = new Account(email, username, password, this);
+    public List<Reservation> getResevations() {
+        return resevations;
+    }
 
-        this.setAccount(account);
-        this.setPersonDetails(personDetails);
+    public void setResevations(List<Reservation> resevations) {
+        this.resevations = resevations;
     }
 
     public void accept(ClientVisitor clientVisitor) {
         clientVisitor.visit(this);
+    }
+
+    public void addReservation(Reservation reservation) {
+        this.resevations.add(reservation);
+    }
+
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

@@ -1,5 +1,10 @@
 package ro.ucv.ace.dto.reservation;
 
+import ro.ucv.ace.model.Tables;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by tzapt on 6/15/2017.
  */
@@ -17,13 +22,19 @@ public class ReservationDto {
 
     private int people;
 
-    public ReservationDto(int id, String name, String email, String date, String phone, int people) {
+    private List<String> tablesList = new ArrayList<>();
+
+    public ReservationDto() {
+    }
+
+    public ReservationDto(int id, String name, String email, String date, String phone, int people, List<String> tables) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.date = date;
         this.phone = phone;
         this.people = people;
+        this.tablesList = tables;
     }
 
     public int getId() {
@@ -72,5 +83,13 @@ public class ReservationDto {
 
     public void setPeople(int people) {
         this.people = people;
+    }
+
+    public List<String> getTablesList() {
+        return tablesList;
+    }
+
+    public void setTablesList(List<String> tablesList) {
+        this.tablesList = tablesList;
     }
 }

@@ -1,6 +1,7 @@
 package ro.ucv.ace.model;
 
 import ro.ucv.ace.model.enums.Day;
+import ro.ucv.ace.visitor.ScheduleDayVisitor;
 
 import javax.persistence.*;
 
@@ -12,7 +13,11 @@ import javax.persistence.*;
 public class ScheduleDay {
 
     @Id
-    @Column(name = "DAY")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
+    private Integer id;
+
+    @Column(name = "WEEK_DAY", unique = true)
     @Enumerated(EnumType.STRING)
     private Day day;
 
@@ -24,11 +29,13 @@ public class ScheduleDay {
     @Basic
     private Integer end;
 
-    @ManyToOne
-    @JoinColumn(name = "SCHEDULE_ID", referencedColumnName = "ID")
-    private Schedule schedule;
-
     public ScheduleDay() {
+    }
+
+    public ScheduleDay(Day day, Integer start, Integer end) {
+        this.day = day;
+        this.start = start;
+        this.end = end;
     }
 
     public Day getDay() {
@@ -55,11 +62,20 @@ public class ScheduleDay {
         this.end = end;
     }
 
-    public Schedule getSchedule() {
-        return schedule;
+    public void accept(ScheduleDayVisitor scheduleDayVisitor) {
+        scheduleDayVisitor.visit(this);
     }
 
-    public void setSchedule(Schedule schedule) {
-        this.schedule = schedule;
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void update(int start, Integer end) {
+        this.start = start;
+        this.end = end;
     }
 }

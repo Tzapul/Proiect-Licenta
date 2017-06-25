@@ -29,7 +29,7 @@ public class Account {
     @Basic
     private String password;
 
-    @Column(name = "EMAIL", nullable = false, unique = true)
+    @Column(name = "ACCOUNT_EMAIL", nullable = false, unique = true)
     @Basic
     private String email;
 

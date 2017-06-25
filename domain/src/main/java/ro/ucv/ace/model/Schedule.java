@@ -17,9 +17,6 @@ public class Schedule {
     @Column(name = "ID")
     private Integer iD;
 
-    @OneToMany(mappedBy = "schedule", cascade = CascadeType.REMOVE)
-    private List<ScheduleDay> days = new ArrayList<>();
-
     public Schedule() {
     }
 }

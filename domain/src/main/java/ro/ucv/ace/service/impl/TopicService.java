@@ -92,7 +92,7 @@ public class TopicService implements ITopicService {
         topic.accept(visitor);
 
         //delete topic folder
-        String path = pathBuilder.buildAbsoluteTopicFolderPath(topic.getProfessor().getId(), topic.getId());
+        String path = pathBuilder.buildAbsoluteTopicFolderPath(1, topic.getId());
         try {
             FileUtils.deleteDirectory(new File(path));
         } catch (IOException e) {
@@ -126,7 +126,7 @@ public class TopicService implements ITopicService {
                 subgroups.forEach(subgroup -> {
                     List<Student> students = subgroup.getStudents();
                     students.forEach(student -> {
-                        if (student.getId().equals(studentId)) {
+                        if (new Integer(1).equals(studentId)) {
                             String mark = "N/A";
                             Solution solution = null;
                             try {

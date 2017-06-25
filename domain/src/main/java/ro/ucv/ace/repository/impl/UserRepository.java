@@ -31,4 +31,9 @@ public class UserRepository implements IUserRepository {
         return true;
     }
 
+    @Override
+    public User save(User user) {
+        return innerUserRepository.save(user);
+    }
+
 }

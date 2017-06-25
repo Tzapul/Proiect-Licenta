@@ -191,4 +191,14 @@ public class DomainConfig {
         return new JpaRepository<>(Client.class);
     }
 
+    @Bean(name = "innerTablesRepository")
+    IJpaRepository<Tables, Integer> TablesIntegerIJpaRepository() {
+        return new JpaRepository<>(Tables.class);
+    }
+
+    @Bean(name = "innerScheduleDayRepository")
+    IJpaRepository<ScheduleDay, Integer> ScheduleDayIntegerIJpaRepository() {
+        return new JpaRepository<>(ScheduleDay.class);
+    }
+
 }

@@ -1,5 +1,7 @@
 package ro.ucv.ace.model;
 
+import ro.ucv.ace.visitor.TableVisitor;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +18,7 @@ public class Tables {
     @Column(name = "ID")
     private Integer id;
 
-    @Column(name = "NAME")
+    @Column(name = "TABLE_NAME")
     @Basic
     private String name;
 
@@ -26,6 +28,9 @@ public class Tables {
 
     @ManyToMany(mappedBy = "tables")
     private List<Reservation> reservations = new ArrayList<>();
+
+    public Tables() {
+    }
 
     public Tables(String name, int noOfPeople) {
         this.name = name;
@@ -54,5 +59,21 @@ public class Tables {
 
     public void setNoOfPeople(int noOfPeople) {
         this.noOfPeople = noOfPeople;
+    }
+
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
+    }
+
+    public void addReservation(Reservation reservation) {
+        reservations.add(reservation);
+    }
+
+    public void accept(TableVisitor tableVisitor) {
+        tableVisitor.visit(this);
     }
 }

@@ -2,6 +2,7 @@ package ro.ucv.ace.repository;
 
 import ro.ucv.ace.model.Reservation;
 
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -16,4 +17,5 @@ public interface IReservationRepository {
     Reservation delete(int id);
 
     Reservation findOne(int id);
+
 }
