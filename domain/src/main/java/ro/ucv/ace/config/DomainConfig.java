@@ -201,4 +201,9 @@ public class DomainConfig {
         return new JpaRepository<>(ScheduleDay.class);
     }
 
+    @Bean(name = "innerGuestRepository")
+    IJpaRepository<Guest, Integer> GuestIntegerIJpaRepository() {
+        return new JpaRepository<>(Guest.class);
+    }
+
 }

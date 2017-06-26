@@ -2,9 +2,7 @@ package ro.ucv.ace.builder.impl;
 
 import org.springframework.stereotype.Component;
 import ro.ucv.ace.builder.IUserBuilder;
-import ro.ucv.ace.dto.client.ESClientDto;
-import ro.ucv.ace.dto.user.ESUserDto;
-import ro.ucv.ace.model.Client;
+import ro.ucv.ace.dto.user.SUserDto;
 import ro.ucv.ace.model.User;
 
 /**
@@ -14,7 +12,7 @@ import ro.ucv.ace.model.User;
 public class UserBuilder implements IUserBuilder {
 
     @Override
-    public User build(ESUserDto userDto) {
+    public User build(SUserDto userDto) {
         return new User(userDto.getFirstName(), userDto.getLastName(),userDto.getPhoneNumber(),userDto.getEmail(),
                 userDto.getUsername(), userDto.getPassword());
     }

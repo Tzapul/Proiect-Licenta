@@ -65,4 +65,12 @@ public class User extends Client{
         notification.setAccount(account);
         //getAccount().getNotifications().add(notification);
     }
+
+    public void update(String firstName, String lastName, String email, String phoneNumber, String password) {
+        this.personDetails.setFirstName(firstName);
+        this.personDetails.setLastName(lastName);
+        this.personDetails.setPhoneNumber(phoneNumber);
+        this.account.setEmail(email);
+        this.account.setPassword(password);
+    }
 }

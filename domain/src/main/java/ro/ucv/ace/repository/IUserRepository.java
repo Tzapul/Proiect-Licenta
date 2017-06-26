@@ -11,4 +11,6 @@ public interface IUserRepository {
     boolean usernameExists(String username);
 
     User save(User build);
+
+    User findOne(int id);
 }

@@ -1,35 +1,25 @@
 package ro.ucv.ace.dto.user;
 
 /**
- * Created by tzapt on 6/25/2017.
+ * Created by itsix on 26/06/2017.
  */
-public class ESUserDto {
+public class EUserDto {
 
-    private String username;
     private String firstName;
     private String lastName;
     private String phoneNumber;
     private String email;
     private String password;
 
-    public ESUserDto() {
+    public EUserDto() {
     }
 
-    public ESUserDto(String username, String firstName, String lastName, String phoneNumber, String email, String password) {
-        this.username = username;
+    public EUserDto(String firstName, String lastName, String phoneNumber, String email, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.password = password;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getFirstName() {

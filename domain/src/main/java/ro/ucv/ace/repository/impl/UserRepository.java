@@ -36,4 +36,9 @@ public class UserRepository implements IUserRepository {
         return innerUserRepository.save(user);
     }
 
+    @Override
+    public User findOne(int id) {
+        return innerUserRepository.findOne(id);
+    }
+
 }
