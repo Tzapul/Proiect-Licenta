@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ro.ucv.ace.builder.impl.DaysOffBuilder;
 import ro.ucv.ace.dto.daysOff.DaysOffDto;
+import ro.ucv.ace.dto.daysOff.ESDaysOffDto;
 import ro.ucv.ace.model.DaysOff;
 import ro.ucv.ace.repository.IDaysOffRepository;
 import ro.ucv.ace.service.IDaysOffService;
@@ -50,7 +51,7 @@ public class DaysOffService implements IDaysOffService {
     }
 
     @Override
-    public DaysOffDto save(DaysOffDto daysOffDto) {
+    public DaysOffDto save(ESDaysOffDto daysOffDto) {
         DaysOff daysOff = daysOffRepository.save(daysOffBuilder.build(daysOffDto));
         daysOff.accept(daysOffVisitor);
         return daysOffVisitor.getDaysOffDto();

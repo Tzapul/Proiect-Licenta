@@ -1,6 +1,7 @@
 package ro.ucv.ace.service;
 
 import ro.ucv.ace.dto.daysOff.DaysOffDto;
+import ro.ucv.ace.dto.daysOff.ESDaysOffDto;
 
 import java.util.List;
 
@@ -12,5 +13,5 @@ public interface IDaysOffService {
 
     DaysOffDto delete(int id);
 
-    DaysOffDto save(DaysOffDto daysOffDto);
+    DaysOffDto save(ESDaysOffDto daysOffDto);
 }

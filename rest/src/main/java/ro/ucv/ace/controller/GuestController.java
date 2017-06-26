@@ -22,10 +22,7 @@ public class GuestController {
     private IGuestService guestService;
 
     @RequestMapping(value = "/guest", method = RequestMethod.POST)
-    public ResponseEntity<GuestDto> postTest(BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            throw new EntityBindingException(bindingResult.getFieldErrors());
-        }
+    public ResponseEntity<GuestDto> postTest() {
 
         GuestDto guestDto = guestService.register();
 

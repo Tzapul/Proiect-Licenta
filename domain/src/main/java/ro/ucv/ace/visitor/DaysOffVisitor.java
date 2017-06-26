@@ -13,7 +13,7 @@ public class DaysOffVisitor {
     private DaysOffDto daysOffDto;
 
     public void visit(DaysOff daysOff) {
-        daysOffDto = new DaysOffDto(daysOff.getDate().toString());
+        daysOffDto = new DaysOffDto(daysOff.getId(), daysOff.getDate().toString());
     }
 
     public DaysOffDto getDaysOffDto() {

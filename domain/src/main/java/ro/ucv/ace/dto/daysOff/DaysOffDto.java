@@ -12,7 +12,8 @@ public class DaysOffDto {
     public DaysOffDto() {
     }
 
-    public DaysOffDto(String date) {
+    public DaysOffDto(int id, String date) {
+        this.id = id;
         this.date = date;
     }
 

@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ro.ucv.ace.dto.daysOff.DaysOffDto;
+import ro.ucv.ace.dto.daysOff.ESDaysOffDto;
 import ro.ucv.ace.dto.reservation.ReservationDto;
 import ro.ucv.ace.dto.studentGrade.StudentGradeDto;
 import ro.ucv.ace.dto.user.UserDto;
@@ -35,7 +36,7 @@ public class DaysOffController {
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public ResponseEntity<DaysOffDto> postLogin(@Valid @RequestBody DaysOffDto daysOffDto, BindingResult bindResult) {
+    public ResponseEntity<DaysOffDto> postLogin(@Valid @RequestBody ESDaysOffDto daysOffDto, BindingResult bindResult) {
         if (bindResult.hasErrors()) {
             throw new EntityBindingException(bindResult.getFieldErrors());
         }

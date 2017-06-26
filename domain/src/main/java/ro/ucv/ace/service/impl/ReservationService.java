@@ -15,9 +15,7 @@ import ro.ucv.ace.repository.ITablesRepository;
 import ro.ucv.ace.service.IReservationService;
 import ro.ucv.ace.visitor.ReservationVisitor;
 
-import javax.persistence.Table;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -86,6 +84,19 @@ public class ReservationService implements IReservationService{
         Reservation reservation = reservationRepository.delete(id);
         reservation.accept(reservationVisitor);
         return reservationVisitor.getReservation();
+    }
+
+    @Override
+    public List<ReservationDto> getAllReservationsForUser(int id) {
+        List<Reservation> reservations = reservationRepository.getAllReservationsForUser(id);
+        List<ReservationDto> reservationDtos = new ArrayList<>();
+
+        reservations.forEach(r -> {
+            r.accept(reservationVisitor);
+            reservationDtos.add(reservationVisitor.getReservation());
+        });
+
+        return reservationDtos;
     }
 
 }

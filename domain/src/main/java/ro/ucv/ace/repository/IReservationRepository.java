@@ -2,7 +2,6 @@ package ro.ucv.ace.repository;
 
 import ro.ucv.ace.model.Reservation;
 
-import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -18,4 +17,5 @@ public interface IReservationRepository {
 
     Reservation findOne(int id);
 
+    List<Reservation> getAllReservationsForUser(int id);
 }

@@ -11,7 +11,7 @@ import ro.ucv.ace.service.IGuestService;
 /**
  * Created by itsix on 26/06/2017.
  */
-@Service("clientService")
+@Service("guestService")
 @Transactional(rollbackFor = Exception.class)
 public class GuestService implements IGuestService {
 

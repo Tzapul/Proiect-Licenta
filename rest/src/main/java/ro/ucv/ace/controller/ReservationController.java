@@ -10,10 +10,12 @@ import ro.ucv.ace.dto.reservation.ESReservationDto;
 import ro.ucv.ace.dto.reservation.ReservationDto;
 import ro.ucv.ace.dto.student.ESStudentDto;
 import ro.ucv.ace.dto.student.StudentDto;
+import ro.ucv.ace.dto.studentGrade.StudentGradeDto;
 import ro.ucv.ace.exception.EntityBindingException;
 import ro.ucv.ace.service.IReservationService;
 
 import javax.validation.Valid;
+import java.util.List;
 
 /**
  * Created by tzapt on 6/15/2017.
@@ -24,6 +26,14 @@ public class ReservationController {
 
     @Autowired
     private IReservationService reservationService;
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public ResponseEntity<List<ReservationDto>> getStudentsForTask(@PathVariable("id") int id) {
+
+        List<ReservationDto> reservations = reservationService.getAllReservationsForUser(id);
+
+        return new ResponseEntity<>(reservations, HttpStatus.OK);
+    }
 
     @RequestMapping(value = "/create/{userId}", method = RequestMethod.POST)
     public ResponseEntity<ReservationDto> saveReservation(@Valid @RequestBody ESReservationDto esReservationDto,
