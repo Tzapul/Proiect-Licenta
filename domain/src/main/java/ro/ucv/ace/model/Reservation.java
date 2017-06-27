@@ -3,6 +3,8 @@ package ro.ucv.ace.model;
 import ro.ucv.ace.visitor.ReservationVisitor;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -32,6 +34,12 @@ public class Reservation{
     @Basic
     private LocalDate date;
 
+    @Min(0)
+    @Max(24)
+    @Column
+    @Basic
+    private int hour;
+
     @Column(name = "PHONE")
     @Basic
     private String phoneNumber;
@@ -52,7 +60,7 @@ public class Reservation{
     public Reservation() {
     }
 
-    public Reservation(String name, String email, LocalDate date, String phoneNumber, Integer people, List<Tables> tables, Client client) {
+    public Reservation(String name, String email, LocalDate date, int hour, String phoneNumber, Integer people, List<Tables> tables, Client client) {
         this.name = name;
         this.email = email;
         this.date = date;
@@ -60,10 +68,7 @@ public class Reservation{
         this.people = people;
         this.tables = tables;
         this.client = client;
-//        client.addReservation(this);
-//        for(Tables table: tables) {
-//            table.addReservation(this);
-//        }
+        this.hour = hour;
     }
 
     public Integer getId() {
@@ -132,5 +137,13 @@ public class Reservation{
 
     public void setClient(Client client) {
         this.client = client;
+    }
+
+    public int getHour() {
+        return hour;
+    }
+
+    public void setHour(int hour) {
+        this.hour = hour;
     }
 }

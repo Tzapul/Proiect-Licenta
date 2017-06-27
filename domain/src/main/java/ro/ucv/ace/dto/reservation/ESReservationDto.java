@@ -11,6 +11,8 @@ public class ESReservationDto {
 
     private String date;
 
+    private int hour;
+
     private String phone;
 
     private int people;
@@ -18,10 +20,11 @@ public class ESReservationDto {
     public ESReservationDto() {
     }
 
-    public ESReservationDto(String name, String email, String date, String phone, int people) {
+    public ESReservationDto(String name, String email, String date, int hour, String phone, int people) {
         this.name = name;
         this.email = email;
         this.date = date;
+        this.hour = hour;
         this.phone = phone;
         this.people = people;
     }
@@ -64,5 +67,13 @@ public class ESReservationDto {
 
     public void setPeople(int people) {
         this.people = people;
+    }
+
+    public int getHour() {
+        return hour;
+    }
+
+    public void setHour(int hour) {
+        this.hour = hour;
     }
 }

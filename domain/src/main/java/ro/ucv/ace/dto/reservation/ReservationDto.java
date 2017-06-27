@@ -1,7 +1,5 @@
 package ro.ucv.ace.dto.reservation;
 
-import ro.ucv.ace.model.Tables;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +16,8 @@ public class ReservationDto {
 
     private String date;
 
+    private int hour;
+
     private String phone;
 
     private int people;
@@ -27,11 +27,12 @@ public class ReservationDto {
     public ReservationDto() {
     }
 
-    public ReservationDto(int id, String name, String email, String date, String phone, int people, List<String> tables) {
+    public ReservationDto(int id, String name, String email, String date, int hour, String phone, int people, List<String> tables) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.date = date;
+        this.hour = hour;
         this.phone = phone;
         this.people = people;
         this.tablesList = tables;
@@ -91,5 +92,13 @@ public class ReservationDto {
 
     public void setTablesList(List<String> tablesList) {
         this.tablesList = tablesList;
+    }
+
+    public int getHour() {
+        return hour;
+    }
+
+    public void setHour(int hour) {
+        this.hour = hour;
     }
 }

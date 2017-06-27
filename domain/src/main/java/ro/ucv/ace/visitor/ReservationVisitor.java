@@ -2,7 +2,6 @@ package ro.ucv.ace.visitor;
 
 import org.springframework.stereotype.Component;
 import ro.ucv.ace.dto.reservation.ReservationDto;
-import ro.ucv.ace.dto.solution.SolutionDto;
 import ro.ucv.ace.model.Reservation;
 
 import java.util.ArrayList;
@@ -19,7 +18,7 @@ public class ReservationVisitor {
         List<String> tableNames = new ArrayList<>();
         reservation.getTables().forEach(table -> tableNames.add(table.getName()));
         reservationDto = new ReservationDto(reservation.getId(), reservation.getName(), reservation.getEmail(),
-                reservation.getDate().toString(), reservation.getPhoneNumber(), reservation.getPeople(), tableNames);
+                reservation.getDate().toString(), reservation.getHour(), reservation.getPhoneNumber(), reservation.getPeople(), tableNames);
     }
 
     public ReservationDto getReservation() {

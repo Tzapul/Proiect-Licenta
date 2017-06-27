@@ -21,7 +21,7 @@ public class ReservationBuilder implements IReservationBuilder {
     @Override
     public Reservation build(ESReservationDto esReservationDto, List<Tables> tablesToBeGiven, Client client) {
         return new Reservation(esReservationDto.getName(), esReservationDto.getEmail(),
-                StringConverter.toLocalDate(esReservationDto.getDate()),
+                StringConverter.toLocalDate(esReservationDto.getDate()), esReservationDto.getHour(),
                 esReservationDto.getPhone(), esReservationDto.getPeople(), tablesToBeGiven, client);
     }
 

@@ -37,7 +37,7 @@ public class LoginService implements ILoginService {
         User user = userRepository.getByUsername(userLogin.getUsername().toLowerCase());
 
         if (!user.passwordMatches(userLogin.getPassword())) {
-            throw new InvalidPasswordException("Invalid user password!");
+            throw new InvalidPasswordException("Invalid password!");
         }
 
         user.accept(userVisitor);
