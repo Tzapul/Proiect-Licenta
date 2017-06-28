@@ -15,7 +15,7 @@ public class ScheduleDayVisitor {
     private ScheduleDayDto scheduleDayDto;
 
     public void visit(ScheduleDay scheduleDay) {
-        scheduleDayDto = new ScheduleDayDto(scheduleDay.getDay().toString(), scheduleDay.getStart(), scheduleDay.getEnd());
+        scheduleDayDto = new ScheduleDayDto(scheduleDay.getId(), scheduleDay.getDay().toString(), scheduleDay.getStart(), scheduleDay.getEnd());
     }
 
     public ScheduleDayDto getScheduleDayDto() {

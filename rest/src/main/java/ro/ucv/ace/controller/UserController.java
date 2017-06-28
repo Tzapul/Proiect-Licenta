@@ -23,7 +23,7 @@ public class UserController {
     @Autowired
     private IUserService userService;
 
-    @RequestMapping(value = "/update/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public ResponseEntity<UserDto> updateProfessor(@Valid @RequestBody EUserDto userDto, BindingResult bindingResult, @PathVariable("id") int id) {
         if (bindingResult.hasErrors()) {
             throw new EntityBindingException(bindingResult.getFieldErrors());

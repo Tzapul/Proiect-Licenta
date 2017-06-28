@@ -54,4 +54,10 @@ public class PersonDetails {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
+
+    public void update(String firstName, String lastName, String phoneNumber) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
+    }
 }

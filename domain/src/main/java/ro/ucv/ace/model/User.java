@@ -67,10 +67,7 @@ public class User extends Client{
     }
 
     public void update(String firstName, String lastName, String email, String phoneNumber, String password) {
-        this.personDetails.setFirstName(firstName);
-        this.personDetails.setLastName(lastName);
-        this.personDetails.setPhoneNumber(phoneNumber);
-        this.account.setEmail(email);
-        this.account.setPassword(password);
+        this.personDetails.update(firstName, lastName, phoneNumber);
+        this.account.update(email, password);
     }
 }

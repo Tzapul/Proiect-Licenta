@@ -23,7 +23,8 @@ public class ScheduleDayDto {
     public ScheduleDayDto() {
     }
 
-    public ScheduleDayDto(String day, int start, int end) {
+    public ScheduleDayDto(int id, String day, int start, int end) {
+        this.id = id;
         this.day = day;
         this.start = start;
         this.end = end;

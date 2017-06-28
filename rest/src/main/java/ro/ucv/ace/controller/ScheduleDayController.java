@@ -28,7 +28,7 @@ public class ScheduleDayController {
     @Autowired
     private IScheduleDayService scheduleDayService;
 
-    @RequestMapping(value = "/getAll", method = RequestMethod.GET)
+    @RequestMapping(value = "", method = RequestMethod.GET)
     public ResponseEntity<List<ScheduleDayDto>> getAllDaysOff() {
 
         List<ScheduleDayDto> daysOff = scheduleDayService.getAllScheduleDays();
@@ -36,7 +36,7 @@ public class ScheduleDayController {
         return new ResponseEntity<>(daysOff, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/update/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public ResponseEntity<ScheduleDayDto> editTask(@Valid @RequestBody EScheduleDayDto scheduleDayDto, BindingResult bindingResult,
                                                    @PathVariable("id") int id) {
         if (bindingResult.hasErrors()) {

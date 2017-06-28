@@ -95,4 +95,9 @@ public class Account {
     public boolean passwordMatches(String password) {
         return passwordEncoder.matches(password, getPassword());
     }
+
+    public void update(String email, String password) {
+        this.email = email;
+        this.password = passwordEncoder.encode(password);
+    }
 }
