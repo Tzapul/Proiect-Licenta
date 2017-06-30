@@ -27,7 +27,7 @@ public class DaysOffController {
     @Autowired
     private IDaysOffService daysOffService;
 
-    @RequestMapping(value = "/getAll", method = RequestMethod.GET)
+    @RequestMapping(value = "", method = RequestMethod.GET)
     public ResponseEntity<List<DaysOffDto>> getAllDaysOff() {
 
         List<DaysOffDto> daysOff = daysOffService.getAllDaysOff();
@@ -35,7 +35,7 @@ public class DaysOffController {
         return new ResponseEntity<>(daysOff, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    @RequestMapping(value = "", method = RequestMethod.POST)
     public ResponseEntity<DaysOffDto> postLogin(@Valid @RequestBody ESDaysOffDto daysOffDto, BindingResult bindResult) {
         if (bindResult.hasErrors()) {
             throw new EntityBindingException(bindResult.getFieldErrors());
@@ -46,7 +46,7 @@ public class DaysOffController {
         return new ResponseEntity<>(userDto, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<DaysOffDto> deleteDaysOff(@PathVariable("id") int id) {
         DaysOffDto deleted = daysOffService.delete(id);
 

@@ -35,7 +35,7 @@ public class ReservationController {
         return new ResponseEntity<>(reservations, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/create/{userId}", method = RequestMethod.POST)
+    @RequestMapping(value = "/{userId}", method = RequestMethod.POST)
     public ResponseEntity<ReservationDto> saveReservation(@Valid @RequestBody ESReservationDto esReservationDto,
                                                           BindingResult bindingResult, @PathVariable("userId") int id) {
         if (bindingResult.hasErrors()) {
@@ -47,7 +47,7 @@ public class ReservationController {
         return new ResponseEntity<>(reservationDto, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<ReservationDto> deleteProfessor(@PathVariable("id") int id) {
         ReservationDto deleted = reservationService.delete(id);
 

@@ -26,7 +26,7 @@ public class Reservation{
     @Basic
     private String name;
 
-    @Column(name = "RESERVATION_EMAIL")
+    @Column(name = "EMAIL")
     @Basic
     private String email;
 

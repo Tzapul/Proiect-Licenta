@@ -40,5 +40,4 @@ public class UserRepository implements IUserRepository {
     public User findOne(int id) {
         return innerUserRepository.findOne(id);
     }
-
 }
