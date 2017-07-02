@@ -61,4 +61,26 @@ public class TablesRepository implements ITablesRepository {
         return allTables;
     }
 
+    @Override
+    public List<Tables> findAllFreeTablesForDateAndHour(LocalDate date, int hour) {
+        List<Tables> tables = new ArrayList<>();
+        List<Tables> allTables = innerTablesRepository.findAll();
+
+        for(Tables table: allTables) {
+            for (Reservation reservation: table.getReservations()) {
+                if(reservation.getDate().equals(date) && reservation.getHour() == hour) {
+                    tables.add(table);
+                }
+            }
+
+            if(allTables.size() == tables.size()) {
+                break;
+            }
+        }
+
+        allTables.removeAll(tables);
+
+        return allTables;
+    }
+
 }

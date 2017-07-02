@@ -20,4 +20,5 @@ public interface ITablesRepository {
 
     List<Tables> findAllFreeTablesForDate(LocalDate date);
 
+    List<Tables> findAllFreeTablesForDateAndHour(LocalDate date, int hour);
 }

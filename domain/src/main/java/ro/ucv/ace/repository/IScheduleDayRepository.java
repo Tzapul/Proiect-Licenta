@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by tzapt on 6/25/2017.
  */
-public interface IScheduleDayRepsitory {
+public interface IScheduleDayRepository {
     ScheduleDay save(ScheduleDay scheduleDay);
 
     List<ScheduleDay> findAll();
@@ -15,4 +15,6 @@ public interface IScheduleDayRepsitory {
     ScheduleDay delete(int id);
 
     ScheduleDay findOne(int id);
+
+    ScheduleDay findByDay(String s);
 }

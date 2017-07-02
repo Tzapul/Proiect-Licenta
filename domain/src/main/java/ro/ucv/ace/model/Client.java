@@ -1,7 +1,6 @@
 package ro.ucv.ace.model;
 
 import ro.ucv.ace.visitor.ClientVisitor;
-import ro.ucv.ace.visitor.UserVisitor;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -23,7 +22,15 @@ public class Client {
     @OneToMany(mappedBy = "client", cascade = CascadeType.REMOVE)
     private List<Reservation> resevations = new ArrayList<>();
 
+    @Column(name = "NOTIFICATION_KEY")
+    @Basic
+    private String notificationKey;
+
     public Client() {
+    }
+
+    public Client(String notificationKey) {
+        this.notificationKey = notificationKey;
     }
 
     public List<Reservation> getResevations() {
@@ -42,12 +49,19 @@ public class Client {
         this.resevations.add(reservation);
     }
 
-
     public Integer getId() {
         return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getNotificationKey() {
+        return notificationKey;
+    }
+
+    public void setNotificationKey(String notificationKey) {
+        this.notificationKey = notificationKey;
     }
 }

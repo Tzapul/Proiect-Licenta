@@ -8,7 +8,7 @@ import ro.ucv.ace.dto.scheduleDay.EScheduleDayDto;
 import ro.ucv.ace.dto.scheduleDay.ScheduleDayDto;
 import ro.ucv.ace.exception.WrongScheduleInterval;
 import ro.ucv.ace.model.ScheduleDay;
-import ro.ucv.ace.repository.IScheduleDayRepsitory;
+import ro.ucv.ace.repository.IScheduleDayRepository;
 import ro.ucv.ace.service.IScheduleDayService;
 import ro.ucv.ace.visitor.ScheduleDayVisitor;
 
@@ -23,7 +23,7 @@ import java.util.List;
 public class ScheduleDayService implements IScheduleDayService {
 
     @Autowired
-    private IScheduleDayRepsitory scheduleDayRepsitory;
+    private IScheduleDayRepository scheduleDayRepsitory;
 
     @Autowired
     private ScheduleDayVisitor scheduleDayVisitor;

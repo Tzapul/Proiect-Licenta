@@ -21,7 +21,9 @@ public class User extends Client{
     public User() {
     }
 
-    public User(String firstName, String lastName, String phoneNumber, String email, String username, String password) {
+    public User(String firstName, String lastName, String phoneNumber, String email, String username, String password,
+                String notificationKey) {
+        super(notificationKey);
         PersonDetails personDetails = new PersonDetails(firstName, lastName, phoneNumber);
         Account account = new Account(email, username, password, this);
 

@@ -14,6 +14,6 @@ public class UserBuilder implements IUserBuilder {
     @Override
     public User build(SUserDto userDto) {
         return new User(userDto.getFirstName(), userDto.getLastName(),userDto.getPhoneNumber(),userDto.getEmail(),
-                userDto.getUsername(), userDto.getPassword());
+                userDto.getUsername(), userDto.getPassword(), userDto.getNotificationKey());
     }
 }
