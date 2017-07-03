@@ -112,65 +112,6 @@ public class DomainConfig {
         return new JpaRepository<>(User.class);
     }
 
-    @Bean(name = "innerSubgroupRepository")
-    IJpaRepository<Subgroup, Integer> subgroupIntegerIJpaRepository() {
-        return new JpaRepository<>(Subgroup.class);
-    }
-
-    @Bean(name = "socketManager")
-    SocketManager socketManager() {
-        return new SocketManager(
-                environment.getRequiredProperty("socket.protocol"),
-                environment.getRequiredProperty("socket.port"),
-                environment.getRequiredProperty("socket.host")
-        );
-    }
-
-    @Bean(name = "innerProfessorRepository")
-    IJpaRepository<Professor, Integer> professorIntegerIJpaRepository() {
-        return new JpaRepository<>(Professor.class);
-    }
-
-    @Bean(name = "innerStudentRepository")
-    IJpaRepository<Student, Integer> studentIntegerIJpaRepository() {
-        return new JpaRepository<>(Student.class);
-    }
-
-    @Bean(name = "innerTaskRepository")
-    IJpaRepository<Task, Integer> taskIntegerIJpaRepository() {
-        return new JpaRepository<>(Task.class);
-    }
-
-    @Bean(name = "innerTopicRepository")
-    IJpaRepository<Topic, Integer> topicIntegerIJpaRepository() {
-        return new JpaRepository<>(Topic.class);
-    }
-
-    @Bean(name = "innerSolutionRepository")
-    IJpaRepository<Solution, Integer> solutionIntegerIJpaRepository() {
-        return new JpaRepository<>(Solution.class);
-    }
-
-    @Bean(name = "nullPlagiarismRepository")
-    IJpaRepository<NullPlagiarismAnalyser, Integer> nullPlagiarismAnalyserIntegerIJpaRepository() {
-        return new JpaRepository<>(NullPlagiarismAnalyser.class);
-    }
-
-    @Bean(name = "defaultPlagiarismRepository")
-    IJpaRepository<DefaultPlagiarismAnalyser, Integer> defaultPlagiarismAnalyserIntegerIJpaRepository() {
-        return new JpaRepository<>(DefaultPlagiarismAnalyser.class);
-    }
-
-    @Bean(name = "innerNotificationRepository")
-    IJpaRepository<Notification, Integer> notificationIntegerIJpaRepository() {
-        return new JpaRepository<>(Notification.class);
-    }
-
-    @Bean(name = "innerPlagiarismResultRepository")
-        IJpaRepository<PlagiarismResult, Integer> plagiarismResultIntegerIJpaRepository() {
-            return new JpaRepository<>(PlagiarismResult.class);
-    }
-
     @Bean(name = "innerReservationRepository")
     IJpaRepository<Reservation, Integer> reservationIntegerIJpaRepository() {
         return new JpaRepository<>(Reservation.class);

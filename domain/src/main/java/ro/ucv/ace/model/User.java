@@ -61,11 +61,6 @@ public class User extends Client{
         this.personDetails = personDetails;
     }
 
-    public void addNotification(Notification notification) {
-        notification.setAccount(account);
-        //getAccount().getNotifications().add(notification);
-    }
-
     public void update(String firstName, String lastName, String email, String phoneNumber, String password) {
         this.personDetails.update(firstName, lastName, phoneNumber);
         this.account.update(email, password);
