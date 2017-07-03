@@ -80,7 +80,6 @@ public class ReservationService implements IReservationService{
                 throw new NoMoreFreePlacesAtTables("There are no more free places for that many people!");
             }
 
-
         }
 
         Collections.sort(freeTables, tablePlacesComparator);

@@ -22,15 +22,15 @@ public class OptimalTableFinder implements IOptimalTableFinder {
         Tables table = searchForTableWithPeople(people);
         List<Tables> tablesToBeGiven;
 
-        if(thereIsNoTableFound(table)) {
+        if (thereIsNoTableFound(table)) {
             tablesToBeGiven = findPlaces(people);
-            int betterTableIndex = searchIndexLessThan(people) + 1;
+            int betterTableIndex = searchIndexLessThan(people);
 
-            if(!validSolution(tablesToBeGiven, people)) {
-                return Collections.singletonList(freeTables.get(betterTableIndex));
+            if(!validSolution(tablesToBeGiven, people) && betterTableIndex == tablesToBeGiven.size()) {
+                return null;
             }
 
-            if(betterTableIndex != freeTables.size()) {
+            if (betterTableIndex != freeTables.size()) {
                 if (checkIfThereIsABetterSolution(tablesToBeGiven, betterTableIndex)) {
                     return Collections.singletonList(freeTables.get(betterTableIndex));
                 }
@@ -45,7 +45,7 @@ public class OptimalTableFinder implements IOptimalTableFinder {
     private boolean validSolution(List<Tables> tablesToBeGiven, int people) {
         int peopleSum = 0;
 
-        for(Tables table: tablesToBeGiven) {
+        for (Tables table : tablesToBeGiven) {
             peopleSum += table.getNoOfPeople();
         }
 
@@ -53,13 +53,13 @@ public class OptimalTableFinder implements IOptimalTableFinder {
     }
 
     private boolean checkIfThereIsABetterSolution(List<Tables> tables, int index) {
-        int poepleSum = 0;
+        int peopleSum = 0;
 
-        for(Tables table: tables) {
-            poepleSum += table.getNoOfPeople();
+        for (Tables table : tables) {
+            peopleSum += table.getNoOfPeople();
         }
 
-        if(freeTables.get(index).getNoOfPeople() < poepleSum) {
+        if (freeTables.get(index).getNoOfPeople() < peopleSum) {
             return true;
         }
 
@@ -72,7 +72,7 @@ public class OptimalTableFinder implements IOptimalTableFinder {
     }
 
     private Tables searchForTableWithPeople(int people) {
-        for(Tables table: freeTables) {
+        for (Tables table : freeTables) {
             if (table.getNoOfPeople() == people) {
                 return table;
             }
@@ -82,7 +82,7 @@ public class OptimalTableFinder implements IOptimalTableFinder {
     }
 
     private List<Tables> findPlaces(int people) {
-        if(people == 0) {
+        if (people == 0) {
             return new ArrayList<>();
         }
 
@@ -104,8 +104,8 @@ public class OptimalTableFinder implements IOptimalTableFinder {
     }
 
     private int searchIndexLessThan(int people) {
-        for (int i = freeTables.size() - 1; i > 0; i--) {
-            if(freeTables.get(i).getNoOfPeople() <= people) {
+        for (int i = freeTables.size() - 1; i >= 0; i--) {
+            if (freeTables.get(i).getNoOfPeople() <= people) {
                 return i;
             }
         }

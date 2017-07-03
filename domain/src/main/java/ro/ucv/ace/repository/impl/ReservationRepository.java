@@ -6,6 +6,8 @@ import ro.ucv.ace.model.Reservation;
 import ro.ucv.ace.repository.IJpaRepository;
 import ro.ucv.ace.repository.IReservationRepository;
 
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -38,6 +40,12 @@ public class ReservationRepository implements IReservationRepository {
     @Override
     public List<Reservation> getAllReservationsForUser(int id) {
         return innerReservationRepository.findAllWhere(reservation -> reservation.getClient().getId().equals(id));
+    }
+
+    @Override
+    public List<Reservation> findAllWhereDateIs(Date date) {
+        return innerReservationRepository.findAllWhere(reservation -> reservation.getDate().equals(
+                date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate()) && date.after(new Date()));
     }
 
 }
