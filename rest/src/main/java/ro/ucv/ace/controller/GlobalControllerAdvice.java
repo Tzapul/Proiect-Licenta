@@ -108,4 +108,11 @@ public class GlobalControllerAdvice {
         return new ResponseEntity<>(errorInfo, HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(WrongPhoneNumberFormat.class)
+    public ResponseEntity<ErrorInfo> wrongPhoneNumberException(WrongPhoneNumberFormat e) {
+        ErrorInfo errorInfo = new ErrorInfo(HttpStatus.BAD_REQUEST, e.getMessage());
+
+        return new ResponseEntity<>(errorInfo, HttpStatus.BAD_REQUEST);
+    }
+
 }

@@ -11,17 +11,20 @@ public class SUserDto {
     private String phoneNumber;
     private String email;
     private String password;
+    private String notificationKey;
 
     public SUserDto() {
     }
 
-    public SUserDto(String username, String firstName, String lastName, String phoneNumber, String email, String password) {
+    public SUserDto(String username, String firstName, String lastName, String phoneNumber, String email, String password,
+                    String notificationKey) {
         this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.password = password;
+        this.notificationKey = notificationKey;
     }
 
     public String getUsername() {
@@ -70,5 +73,13 @@ public class SUserDto {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getNotificationKey() {
+        return notificationKey;
+    }
+
+    public void setNotificationKey(String notificationKey) {
+        this.notificationKey = notificationKey;
     }
 }

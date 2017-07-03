@@ -10,4 +10,10 @@ import javax.persistence.Table;
 @Table(name = "GUEST")
 public class Guest extends Client {
 
+    public Guest() {
+    }
+
+    public Guest(String notificaionKey) {
+        super(notificaionKey);
+    }
 }
