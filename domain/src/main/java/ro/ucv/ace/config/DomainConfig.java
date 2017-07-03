@@ -21,7 +21,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import ro.ucv.ace.model.*;
 import ro.ucv.ace.repository.IJpaRepository;
 import ro.ucv.ace.repository.impl.JpaRepository;
-import ro.ucv.ace.socket.impl.SocketManager;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
@@ -38,7 +37,7 @@ import java.util.Properties;
 @EnableSpringConfigured
 @EnableScheduling
 @ComponentScan({"ro.ucv.ace"})
-@PropertySource(value = {"classpath:db.properties", "classpath:mail.properties", "classpath:socket.properties",
+@PropertySource(value = {"classpath:db.properties", "classpath:mail.properties",
         "classpath:folder.properties"})
 public class DomainConfig {
 
